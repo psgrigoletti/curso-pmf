@@ -3,6 +3,13 @@
 from st_on_hover_tabs import on_hover_tabs
 import streamlit as st
 import tesouro_direto as td
+from datetime import datetime
+
+@st.cache_data
+def retorna_dados_td(data):
+    o = td.TesouroDireto()
+    o.atualizar_graficos()
+    return o
 
 st.set_page_config(
     page_title="Dashboard Margem Líquida",
@@ -15,9 +22,8 @@ with st.sidebar:
                          iconName=['dashboard', 'money', ], default_choice=0)
 
 if tabs =='Tesouro Direto':
-    objeto = td.TesouroDireto()
-    objeto.atualizar_graficos()
-    st.button("Atualizar", help="Atualizar gŕaficos", on_click=objeto.atualizar_graficos())
+    objeto = retorna_dados_td(datetime.today().today().strftime('%d/%m/%Y'))
+    st.button("Atualizar", help="Atualizar gŕaficos", on_click=retorna_dados_td(datetime.today().today().strftime('%d/%m/%Y')))
     st.title("Tesouro direto")
     st.write("Tesouro SELIC")
     st.plotly_chart(objeto.retornar_grafico_precos_tesouro_selic(), use_container_width=True)
