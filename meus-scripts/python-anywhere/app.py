@@ -15,16 +15,19 @@ with st.sidebar:
                          iconName=['dashboard', 'money', ], default_choice=0)
 
 if tabs =='Tesouro Direto':
+    objeto = td.TesouroDireto()
+    objeto.atualizar_graficos()
+    st.button("Atualizar", help="Atualizar gŕaficos", on_click=objeto.atualizar_graficos())
     st.title("Tesouro direto")
     st.write("Tesouro SELIC")
-    st.plotly_chart(td.retornar_grafico_precos_tesouro_selic(), use_container_width=True)
-    st.plotly_chart(td.retornar_grafico_taxas_tesouro_selic(), use_container_width=True)
+    st.plotly_chart(objeto.retornar_grafico_precos_tesouro_selic(), use_container_width=True)
+    st.plotly_chart(objeto.retornar_grafico_taxas_tesouro_selic(), use_container_width=True)
     st.write("Tesouro IPCA+")
-    st.plotly_chart(td.retornar_grafico_precos_tesouro_ipca(), use_container_width=True)
-    st.plotly_chart(td.retornar_grafico_taxas_tesouro_ipca(), use_container_width=True)
+    st.plotly_chart(objeto.retornar_grafico_precos_tesouro_ipca(), use_container_width=True)
+    st.plotly_chart(objeto.retornar_grafico_taxas_tesouro_ipca(), use_container_width=True)
     st.write("Tesouro Préfixado")
-    st.plotly_chart(td.retornar_grafico_precos_tesouro_pre(), use_container_width=True)
-    st.plotly_chart(td.retornar_grafico_taxas_tesouro_pre(), use_container_width=True)  
+    st.plotly_chart(objeto.retornar_grafico_precos_tesouro_pre(), use_container_width=True)
+    st.plotly_chart(objeto.retornar_grafico_taxas_tesouro_pre(), use_container_width=True)  
     
 elif tabs == 'Relatório Focus':
     st.title("Relatório Focus")
