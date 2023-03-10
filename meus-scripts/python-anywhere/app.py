@@ -2,7 +2,7 @@
 
 from st_on_hover_tabs import on_hover_tabs
 import streamlit as st
-import yfinance as yf
+import tesouro_direto as td
 
 st.set_page_config(
     page_title="Dashboard Margem Líquida",
@@ -16,8 +16,16 @@ with st.sidebar:
 
 if tabs =='Tesouro Direto':
     st.title("Tesouro direto")
-    st.write('Name of option is {}'.format(tabs))
-
+    st.write("Tesouro SELIC")
+    st.plotly_chart(td.retornar_grafico_precos_tesouro_selic(), use_container_width=True)
+    st.plotly_chart(td.retornar_grafico_taxas_tesouro_selic(), use_container_width=True)
+    st.write("Tesouro IPCA+")
+    st.plotly_chart(td.retornar_grafico_precos_tesouro_ipca(), use_container_width=True)
+    st.plotly_chart(td.retornar_grafico_taxas_tesouro_ipca(), use_container_width=True)
+    st.write("Tesouro Préfixado")
+    st.plotly_chart(td.retornar_grafico_precos_tesouro_pre(), use_container_width=True)
+    st.plotly_chart(td.retornar_grafico_taxas_tesouro_pre(), use_container_width=True)  
+    
 elif tabs == 'Relatório Focus':
     st.title("Relatório Focus")
     st.write('Name of option is {}'.format(tabs))
