@@ -20,7 +20,7 @@ add_page_title()
 # emojis: https://streamlit-emoji-shortcodes-streamlit-app-gwckff.streamlit.app/
 show_pages(
     [
-        Page("app.py", "Inicial", ":beginner:"),        
+        Page(st.secrets["pasta_ajustada"] + "app.py", "Inicial", ":beginner:"),        
         Section(name="Dividendos", icon=":wavy_dash:"),
         Page(st.secrets["pasta_ajustada"] + "pages/page_dividendos_por_acao.py", "Por ação", ":moneybag:"),
         Page(st.secrets["pasta_ajustada"] + "pages/page_dividendos_maiores_pagadores.py", "Maiores pagadores", ":moneybag:"),
