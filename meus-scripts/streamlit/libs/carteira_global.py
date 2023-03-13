@@ -37,7 +37,7 @@ class CarteiraGlobal:
         #tickers = [t for t in tickers if not t[-1].isalpha()]
         tickers.sort()
         #df['ticker-nome'] = df['ticker'].str[:] + " - " + df['name'].str[:]
-        #print(lista)
+        print(tickers)
         return tickers
         
     def retonar_dados_fiis(self, ticker):
