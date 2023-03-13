@@ -21,11 +21,35 @@ class CarteiraGlobal:
         return df
         
     def retonar_dados_fiis(self, ticker):
+        logging.log(logging.INFO, "Executando retonar_dados_fiis")
         url = f"https://api.carteiraglobal.com/equity/fiis/{ticker}"
         req = requests.get(url, headers = self.headers)
-        response = req.json()
-        df = pd.DataFrame(response)
-        return df
+        if req.status_code == 200:        
+            response = req.json()
+            logging.log(logging.INFO, "Resposta retonar_dados_fiis:")
+            logging.log(logging.INFO, response)                
+            return response
+            # df = pd.DataFrame(response)
+            # return df
+        else:
+            logging.log(logging.INFO, "Resposta diferente de HTTP 200: " + str(req.status_code))
+            raise Exception("Resposta diferente de HTTP 200: " + str(req.status_code)) 
+                
+    def retonar_dados_acoes(self, ticker):
+        logging.log(logging.INFO, "Executando retonar_dados_acoes")        
+        url = f"https://api.carteiraglobal.com/equity/stocks/{ticker}"
+        req = requests.get(url, headers = self.headers)
+        if req.status_code == 200:
+            response = req.json()
+            logging.log(logging.INFO, "Resposta retonar_dados_acoes:")                
+            logging.log(logging.INFO, response)                
+            return response
+            # df = pd.DataFrame(response)
+            # return df    
+        else:
+            logging.log(logging.INFO, "Resposta diferente de HTTP 200: " + str(req.status_code))            
+            raise Exception("Resposta diferente de HTTP 200: " + str(req.status_code)) 
+            
     
     def retornar_cotacoes(self, ticker, data_inicial, data_final):
         url = f"https://api.carteiraglobal.com/equity/{ticker}/report?init_date={data_inicial}&end_date={data_final}"
