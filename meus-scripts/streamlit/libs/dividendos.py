@@ -1,5 +1,5 @@
-import yfinance as yf
-import locale
+# import yfinance as yf
+# import locale
 import logging
 import plotly.graph_objects as go
 from datetime import date
@@ -16,7 +16,7 @@ class Dividendos:
 
     def __init__(self):
         logging.log(logging.INFO, "Inicializando objeto da classe Dividendos")
-        locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+        # locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
     
     def setar_chave_carteira_global(self, chave_carteira_global):
         self.chave_carteira_global = chave_carteira_global

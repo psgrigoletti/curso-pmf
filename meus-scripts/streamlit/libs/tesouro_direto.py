@@ -1,7 +1,7 @@
 from datetime import datetime
 import pandas as pd
 import plotly.graph_objects as go
-import locale
+# import locale
 import logging
 
 class TesouroDireto():
@@ -36,7 +36,7 @@ class TesouroDireto():
             
     def __init__(self):
         logging.log(logging.INFO, "Inicializando objeto da classe TesouroDireto")
-        locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+        # locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 
     def adicionar_range_slider(self, fig):
         fig.update_layout(

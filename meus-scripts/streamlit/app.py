@@ -3,8 +3,8 @@
 import streamlit as st
 from st_pages import Page, Section, show_pages, add_page_title
 
-import locale
-locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+# import locale
+# locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 
 
 st.set_page_config(

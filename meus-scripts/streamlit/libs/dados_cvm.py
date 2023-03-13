@@ -1,5 +1,5 @@
 import pandas as pd
-import locale
+# import locale
 import logging
 import requests
 import zipfile
@@ -16,7 +16,7 @@ class DadosCVM:
 
     def __init__(self):
         logging.log(logging.INFO, "Inicializando objeto da classe DadosCVM")
-        locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+        # locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
     
     def buscar_empresas(self):
         logging.log(logging.INFO, "Buscando dados das empresas do site http://dados.cvm.gov.br/")        

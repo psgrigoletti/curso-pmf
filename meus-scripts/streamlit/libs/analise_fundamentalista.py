@@ -1,7 +1,7 @@
 from datetime import datetime
 import pandas as pd
 import plotly.graph_objects as go
-import locale
+# import locale
 import logging
 from multiprocessing import Pool
 import requests
