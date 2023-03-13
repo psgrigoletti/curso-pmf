@@ -22,11 +22,11 @@ show_pages(
     [
         # Page("pages/page_inicial.py", "Inicial", ":beginner:"),        
         Section(name="Dividendos", icon=":wavy_dash:"),
-        Page("pages/page_dividendos_por_acao.py", "Por ação", ":moneybag:"),
-        Page("pages/page_dividendos_maiores_pagadores.py", "Maiores pagadores", ":moneybag:"),
+        Page("./pages/page_dividendos_por_acao.py", "Por ação", ":moneybag:"),
+        Page("./pages/page_dividendos_maiores_pagadores.py", "Maiores pagadores", ":moneybag:"),
         Section(name="Outros", icon=":mate_drink:"),        
-        Page("pages/page_analise_fundamentalista.py", "Análise Fundamentalista", ":bank:"),
-        Page("pages/page_relatorio_focus.py", "Relatório Focus", ":newspaper:"),
-        Page("pages/page_tesouro_direto.py", "Tesouro Direto", ":flag-br:"),
+        Page("./pages/page_analise_fundamentalista.py", "Análise Fundamentalista", ":bank:"),
+        Page("./pages/page_relatorio_focus.py", "Relatório Focus", ":newspaper:"),
+        Page("./pages/page_tesouro_direto.py", "Tesouro Direto", ":flag-br:"),
     ]
 )
