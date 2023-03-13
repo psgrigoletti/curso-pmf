@@ -2,7 +2,7 @@ import streamlit as st
 import datetime
 from libs.dividendos import Dividendos 
 from libs.carteira_global import CarteiraGlobal 
-from libs.carteira_teorica_b3 import CarteiraTeoricaB3
+# from libs.carteira_teorica_b3 import CarteiraTeoricaB3
 import logging
 from st_pages import add_page_title
 
