@@ -18,7 +18,27 @@ class CarteiraGlobal:
         req = requests.get(url, headers = self.headers)
         response = req.json()
         df = pd.DataFrame(response)
-        return df
+        df['ticker-nome'] = df['ticker'].str[:] + " - " + df['name'].str[:]
+        tickers = df['ticker'].tolist()
+        tickers = [t for t in tickers if '11' in t]
+        tickers = [t for t in tickers if not t[-1].isalpha()]
+        tickers.sort()
+        return tickers
+
+    def retornar_lista_acoes(self):
+        url = f"https://api.carteiraglobal.com/equity/stocks"
+        req = requests.get(url, headers = self.headers)
+        response = req.json()
+        df = pd.DataFrame(response)
+        rows = df['rows']
+        #rows = df[df['rows']]
+        tickers = [r['ticker'] for r in rows] #  + " - " + r['name']
+        #tickers = [t for t in tickers if len(t) <= 6]
+        #tickers = [t for t in tickers if not t[-1].isalpha()]
+        tickers.sort()
+        #df['ticker-nome'] = df['ticker'].str[:] + " - " + df['name'].str[:]
+        #print(lista)
+        return tickers
         
     def retonar_dados_fiis(self, ticker):
         logging.log(logging.INFO, "Executando retonar_dados_fiis")

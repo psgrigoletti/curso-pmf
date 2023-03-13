@@ -2,6 +2,7 @@ import streamlit as st
 import datetime
 from libs.dividendos import Dividendos 
 from libs.carteira_global import CarteiraGlobal 
+from libs.carteira_teorica_b3 import CarteiraTeoricaB3
 import logging
 
 st.set_page_config(layout="wide")
@@ -11,6 +12,31 @@ from st_pages import add_page_title
 st.markdown("# Dividendos")
 
 add_page_title()
+
+@st.cache_data
+def retornar_carteira_teorica(carteira="IBOV"):
+    logging.log(logging.INFO, f"Buscando carteira teórica {carteira}")
+    ctb3 = CarteiraTeoricaB3()
+    df = ctb3.busca_carteira_teorica(carteira)
+    lista = df['Código'].to_list()
+    lista.sort()
+    return lista
+
+@st.cache_data
+def retornar_lista_acoes():
+    logging.log(logging.INFO, f"Buscando lista de ações disponíveis")
+    cg = CarteiraGlobal()
+    cg.setar_token(st.secrets["carteira_global"]["x_api_key"])
+    lista = cg.retornar_lista_acoes()
+    return lista
+
+@st.cache_data
+def retornar_lista_fiis():
+    logging.log(logging.INFO, f"Buscando lista de FIIs disponíveis")
+    cg = CarteiraGlobal()
+    cg.setar_token(st.secrets["carteira_global"]["x_api_key"])
+    lista = cg.retornar_lista_fiis()
+    return lista
 
 @st.cache_data
 def retornar_dados_ticker(ticker):
@@ -56,10 +82,27 @@ def validar_parametros(ticker, data_inicial, data_final):
     return True
         
 mensagens = st.container()
+acoes = retornar_lista_acoes()
+fiis = retornar_lista_fiis()
+carteira_ibov = retornar_carteira_teorica("IBOV")
+
+tipo = st.radio(
+    "Tipo",
+    ('Ações', 'FIIs'))
 
 col1, col2, col3 = st.columns([1,1,1])
 
-ticker = col1.text_input('Informe o ticker:', "WEGE3")
+if tipo == 'Ações':
+    ticker = col1.selectbox(
+        'Selecione a Ação que deseja analisar:',
+        carteira_ibov)
+else:
+    ticker = col1.selectbox(
+        'Selecione o FII que deseja analisar:',
+        fiis) 
+
+#ticker = col1.text_input('Informe o ticker:', "WEGE3")
+
 data_inicial = col2.date_input(
     "Data inicial:",
     datetime.date(2018, 1, 1))

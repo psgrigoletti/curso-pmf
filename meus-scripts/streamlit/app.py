@@ -14,13 +14,13 @@ st.set_page_config(
 
 add_page_title()
 
-st.markdown("# Página Principal")
-st.sidebar.markdown("# Página Principal")
+#st.markdown("# Página Principal")
+#st.sidebar.markdown("# Página Principal")
 
 # emojis: https://streamlit-emoji-shortcodes-streamlit-app-gwckff.streamlit.app/
 show_pages(
     [
-        # Page("pages/page_inicial.py", "Inicial", ":beginner:"),        
+        Page("app.py", "Inicial", ":beginner:"),        
         Section(name="Dividendos", icon=":wavy_dash:"),
         Page(st.secrets["pasta_ajustada"] + "pages/page_dividendos_por_acao.py", "Por ação", ":moneybag:"),
         Page(st.secrets["pasta_ajustada"] + "pages/page_dividendos_maiores_pagadores.py", "Maiores pagadores", ":moneybag:"),
